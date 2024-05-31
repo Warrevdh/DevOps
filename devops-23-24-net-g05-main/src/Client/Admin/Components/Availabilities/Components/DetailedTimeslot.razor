@@ -1,0 +1,46 @@
+﻿@if (Open)
+{
+    <div class="request-overlay @((Open) ? "open" : "")">
+        <div class="request">
+            <h4>Afspraak info</h4>
+            <div>
+                <label>Start:  
+                    <b>
+						@Appointment.Timeslot!.Start.TimeOfDay
+                    </b>
+                </label>
+                <label>&emsp; Duur:
+                    <b>
+                        @Appointment.Timeslot!.Duration.Minutes min
+                    </b>
+                </label>
+            </div>
+            <div>
+				<label>Patientgegevens:</label>
+                <div class="patient">
+                    <p><b>Voornaam:</b>      &emsp; @Appointment.Patient!.FirstName</p>
+                    <p><b>Achternaam:</b>    &emsp; @Appointment.Patient!.LastName</p>
+                    <p><b>Geboortedatum:</b> &emsp; @birthdate</p>
+                    <p><b>Email:</b>         &emsp; @Appointment.Patient!.Email</p>
+                    <p><b>Gsm nr:</b>        &emsp; @Appointment.Patient!.PhoneNumber</p>
+                </div>
+                
+            </div>
+            <div>
+                <label>Reden:</label>
+                <div class="text">
+                    @Appointment.Reason
+                </div>
+            </div>
+            <div>
+                <label>Opmerking:</label>
+                <div class="text">
+                    @Appointment.Note
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="requestButton" @onclick="ClosePopUp">OK</button>
+            </div>
+        </div>
+    </div>
+}

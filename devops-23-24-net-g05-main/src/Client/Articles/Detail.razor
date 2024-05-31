@@ -1,0 +1,38 @@
+﻿@page "/Nieuws/{Id:long}"
+
+<PageTitle>@article?.Title</PageTitle>
+
+    <div class="article-detail">
+        @if (article is null) {
+        <div class="loading">
+            <Loader />
+        </div>
+        }
+        else {
+        <div class="back" @onclick="GoBack">
+            <img src="/images/chevron-left.svg" alt="checvron-left" />
+            <span>Terug</span>
+        </div>
+        <div class="header">
+            <h3>@article?.Title</h3>
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="imgContainer">
+                    <img src="@article?.ImageUrl" alt="Oogaandoening" />
+                </div>
+@*                 <img class="bg-circle" src="/images/OogaandoeningEclipse.png" alt="Oogaandoening" /> *@
+                <div class="introduction">
+                    <h5>Korte beschrijving:</h5>
+                    <p>@article?.Description</p>
+                </div>
+            </div>
+
+            <article>
+                <section>
+                    @((MarkupString)@article?.Content)
+                </section>
+            </article>
+        </div>
+     }
+</div>

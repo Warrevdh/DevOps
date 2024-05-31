@@ -1,0 +1,68 @@
+@page "/admin"
+@using Client.Admin.Components.Availabilities
+@using Client.Admin.Components.EyeConditions
+@using Client.Admin.Components.Articles
+@using Client.Admin.Components.Team
+@using Client.Admin.Services;
+@inject NavService NavService
+
+<nav class="navbar flex" style="
+     margin: 15px;
+     height: 100px;">
+    <div class="nav-logo">
+        <img class="logo" src="images/logo.png" title="Logo">
+    </div>
+    <AuthorizeView Roles="Administrator">
+        <Authorized>
+            <div class="@GetBurgerMenuClass()">
+                <div class="nav-item px-3" @onclick="ToggleMenu">
+                    <p class="nav-link" @onclick='() => SetActive("team")'>
+                        TEAM
+                        <hr />
+                    </p>
+                </div>
+                <div class="nav-item px-3" @onclick="ToggleMenu">
+                    <p class="nav-link" @onclick='() => SetActive("availability")'>
+                        AGENDA
+                        <hr />
+                    </p>
+                </div>
+                <div class="nav-item px-3" @onclick="ToggleMenu">
+                    <p class="nav-link" @onclick='() => SetActive("article")'>
+                        NIEUWS
+                        <hr />
+                    </p>
+                </div>
+                <div class="nav-item px-3" @onclick="ToggleMenu">
+                    <p class="nav-link" @onclick='() => SetActive("eyecondition")'>
+                        OOGAANDOENINGEN
+                        <hr />
+                    </p>
+                </div>
+
+            </div>
+        </Authorized>
+    </AuthorizeView>
+    <div class="nav-item px-3">
+        <AccessControl />
+    </div>
+    <img class="burger-menu" src="/images/menu.png" @onclick="ToggleMenu" />
+</nav>
+
+<div class="gridContainer"> 
+@if (ActiveItem == "team")
+{
+    <TeamGrid />
+}
+else if (ActiveItem == "eyecondition")
+{
+    <EyeConditionGrid />
+}
+else if (ActiveItem == "article")
+{
+   <ArticleGrid /> 
+} else if (ActiveItem == "availability")
+{
+    <AvailabilityGrid />
+}
+</div>

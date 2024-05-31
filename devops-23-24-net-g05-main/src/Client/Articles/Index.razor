@@ -1,0 +1,37 @@
+﻿@page "/Nieuws"
+
+<PageTitle>Nieuws</PageTitle>
+
+<div class="news">
+	<div class="header">
+		<h3>Nieuws</h3>
+        <div class="filter">
+            <ArticleFilter Searchterm="@Searchterm" />
+		</div>
+	</div>
+    <div class="content" data-test-id="articles">
+        @if (articles is null)
+        {
+            <div class="loading">
+                <Loader />
+            </div>
+        }
+        else
+        {
+            if (!articles.Any())
+            {
+                <div class="notification">
+                    Geen nieuwsartikelen gevonden met deze zoek criteria...
+                </div>
+            }
+            else
+            {
+                @foreach (var item in articles)
+                {
+                    <ArticleCard Article="item" />
+                }  
+            }
+        }
+	</div>
+    <Footer />
+</div>

@@ -1,0 +1,92 @@
+.page {
+    position: relative;
+
+    display: flex;
+    align-items: stretch;
+    justify-content:flex-start;
+    flex-direction: column;
+    gap: 30px;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 0 140px 20px 140px;
+    background: transparent;
+}
+
+.page nav {
+    background-color: rgb(221,245,244);
+
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 115px;
+
+    padding: 15px 0 0 0;
+    border-radius: 0 0 25px 25px;
+
+    z-index: 3;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.section {
+    width:100%;
+    min-height: calc(100vh - 145px);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: relative;
+}
+
+.body-container {
+    width: 100%;
+    min-height: 100%;
+
+    padding: 25px 0 0 0;
+
+    position:relative;
+}
+
+@media only screen and (max-width: 1200px) {
+    .page {
+        padding: 10px 45px 0 45px;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+
+.top-row {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row ::deep a, .top-row .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+    }
+
+    .top-row a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media only screen and (max-width: 750px) {
+    .page {
+        padding: 0 45px;
+    }
+}
+

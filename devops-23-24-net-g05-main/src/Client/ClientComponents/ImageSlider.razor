@@ -1,0 +1,28 @@
+﻿@using System.Threading.Tasks
+@inject IJSRuntime JSRuntime
+
+<div class="image-slider">
+    <div class="slide-container">
+        @foreach (var image in images)
+        {
+            <img class="slide" src="@image"/>
+        }
+    </div>
+</div>
+
+@code {
+    private string[] images = new string[]
+    {
+        "/images/surgeon.jpg",
+        "/images/slider1.jpg",
+        "/images/slider2.jpg",
+        // Add more image URLs here
+    };
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("startAutoSlide");
+        }
+    }
+}

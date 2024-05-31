@@ -1,0 +1,34 @@
+﻿@page "/Team/Groep/Edit"
+@using Client.Team.Components;
+@using Radzen
+@using Radzen.Blazor
+@using FluentValidation
+@inject IJSRuntime JSRuntime
+
+@if(groups is null)
+{
+    <Loader/>
+} else {
+
+    <div class="create-group">
+        <div class="header">
+            <h3>Voeg een groep toe</h3>
+        </div>
+        <div class="content">
+            <EditForm Model="@groups" OnValidSubmit=@EditGroupAsync>
+                <div>
+                    @foreach(var group in groups)
+                    {
+                        <GroupEditCard Group="group"/>
+                    }
+                </div>
+
+                <div class="buttons">
+                    <a href="Team" class="cancelBtn">Annuleren</a>
+                    <button class="button is-link is-fullwidth acceptBtn" type="submit">Aanpassen</button>         
+                </div>
+            </EditForm>
+        </div>
+    </div>
+    <link rel="stylesheet" href="_content/Radzen.Blazor/css/material-base.css">
+  }

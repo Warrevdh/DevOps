@@ -1,0 +1,47 @@
+﻿@using Shared.Users.Doctors.Employees;
+
+
+<RadzenButton ButtonStyle="ButtonStyle.Success" Icon="add_circle_outline" class="mt-2 mb-4" Text="Voeg nieuw teamlid toe" Click=@AddEmployee />
+<RadzenDataGrid @ref="employeeGrid" GridLines="Radzen.DataGridGridLines.Vertical" AllowAlternatingRows="true" AllowPaging="true" PageSize="10" AllowSorting="true" Data="@employees" TItem="EmployeeDto.Index" ColumnWidth="200px">
+    <Columns>
+        <RadzenDataGridColumn TItem="EmployeeDto.Index" Property="Id" Title="ID" Width="50px" />
+        <RadzenDataGridColumn TItem="EmployeeDto.Index" Title="Naam" Width="50px">
+            <Template Context="employee"> 
+                @employee.Firstname @employee.Lastname
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="EmployeeDto.Index" Title="Geboortedatum" Width="50px">
+            <Template Context="employee">
+                @employee.Birthdate.ToString("dd-MM-yyyy")
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="EmployeeDto.Index" Property="Email" Title="Email" Width="100px" />
+        <RadzenDataGridColumn TItem="EmployeeDto.Index" Property="Phone" Title="Telefoonnummer" Width="50px" />
+        <RadzenDataGridColumn TItem="EmployeeDto.Index" Title="Groep" Width="50px">
+            <Template Context="employee">
+                @employee.Group.Name
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="EmployeeDto.Index">
+            <Template Context="employee">
+                    @if (GetRole(employee.Email) == "Administrator")
+                    {
+                        <RadzenButton Click="@(() => ChangeRole(employee.Email))">Verwijder adminrechten</RadzenButton>
+                    }
+                    else
+                    {
+                        <RadzenButton Click="@(() => ChangeRole(employee.Email))">Geef adminrechten</RadzenButton>
+                    }
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="EmployeeDto.Index" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" FrozenPosition="FrozenColumnPosition.Right" Width="50px">
+            <Template Context="employee">
+                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium" Click="@(args => EditRow(employee))" />
+                @if (user.Identity.Name != employee.Email) {
+                    <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Variant="Variant.Flat" Shade="Shade.Lighter" Size="ButtonSize.Medium" class="my-1 ms-1" Click="@(args => DeleteRow(employee))" @onclick:stopPropagation="true" />
+                }
+            </Template>
+        </RadzenDataGridColumn>
+    </Columns>
+</RadzenDataGrid>
+<DeletePopUp Open="@open" ObjectName="employee" ToggleClose="CloseDeletePopUp" RequestDelete="ConfirmDelete" />

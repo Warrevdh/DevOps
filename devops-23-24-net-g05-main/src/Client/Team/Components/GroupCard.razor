@@ -1,0 +1,9 @@
+﻿<div class="group-header">
+    <h4>@Group.Name</h4>
+    @if (Admin)
+    {
+        <button class="delete_button" @onclick="RequestDeleteGroup">
+            <img src="./images/trash-2.svg" alt="delete button" title="Verwijder Groep" />
+        </button>
+    }
+</div>

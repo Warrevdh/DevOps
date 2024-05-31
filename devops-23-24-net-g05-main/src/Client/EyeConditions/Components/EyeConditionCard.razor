@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+<div class="oogaandoening" data-test-id="eyecondition">
+	<div class="afbeelding">
+        <img src="@EyeCondition.ImageUrl" alt="@EyeCondition.Name" title="@EyeCondition.Name" />
+	</div>
+	<div class="content">
+		<div class="text">
+ 			<h5>@EyeCondition.Name</h5>
+			<p>@EyeCondition.Description</p>
+		</div>
+		<AuthorizeView>
+			<Authorized>
+				<div class="buttons">
+					<button class="edit_button" @onclick="OpenInfo">
+						<img src="./images/edit-2.svg" alt="edit button" title="Edit Oogaandoening" />
+					</button>
+					<button class="delete_button" @onclick="RequestDelete">
+						<img src="./images/trash-2.svg" alt="delete button" title="Delete Oogaandoening" />
+					</button>
+				</div>
+			</Authorized>
+		</AuthorizeView>
+		<button @onclick="NavigateToDetail">LEES MEER</button>
+	</div>
+</div>

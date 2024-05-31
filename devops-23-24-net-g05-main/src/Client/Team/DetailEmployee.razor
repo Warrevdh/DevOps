@@ -1,0 +1,82 @@
+﻿@page "/Team/{Id:long}"
+
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+<PageTitle>Doctor Details</PageTitle>
+
+@if (employee is null)
+{
+    <Loader /> <!-- Display loader while data is being fetched -->
+}
+else
+{    <!-- Doctor details section -->
+    <div class="doctor-details">
+        <!-- Back navigation -->
+        <div class="back" @onclick="GoBack">
+            <img src="/images/chevron-left.svg" alt="chevron-left" />
+            <span>Terug</span>
+        </div>
+
+        <!-- Doctor's name header -->
+        <div class="header" data-test-id="employeeName">
+            <h3>@employee.Lastname @employee.Firstname</h3>
+                <AuthorizeView>
+				    <Authorized>
+                        <!-- Edit button for admin users -->
+                        <img class="edit" @onclick="NavigateToEditEmployee" src="./images/edit-3.svg" alt="edit" title="Wijzig medewerker" />
+                    </Authorized>
+                </AuthorizeView>
+        </div>
+
+        <!-- Doctor's information content -->
+        <div class="content">
+            <img src="@employee.Image" alt="Doctor's Image" />
+            <div class="right-col">
+                <!-- Doctor's biography -->
+               <div class="biography">
+                    <h5>Biografie</h5>
+                    <div class="accordion">
+                        <div class="@ContentClass">
+                            @if (bio is not null)
+                            {
+                                <p>@bio.Info</p>
+                            }
+                            else
+                            {
+                                <p>Geen biografie beschikbaar.</p>
+                            }
+                        </div>
+                        <img class="accordion-toggle" @onclick="ToggleAccordion" src="@ChevronImage" alt="Toggle" />
+                    </div>
+                </div>
+
+                <!-- Working hours schedule -->
+                <div class="work-hours">
+                    <h5>
+                        Weekuren
+                    </h5>
+                    @if (employee.Availabilities is not null && employee.Availabilities.Any())
+                    {
+                       <ul>
+                            @foreach (var day in employee.Availabilities)
+                            {
+
+                                    <li>
+                                        <span>@day.StartDate.ToString("ddd dd/MM/yyyy")</span>
+                                        <span>
+                                            <span class="hour">@day.StartDate.ToString("HH:mm")</span>
+                                            <span>-</span>
+                                            <span class="hour">@day.EndDate.ToString("HH:mm")</span>
+                                        </span>
+                                    </li>
+                            }
+                        </ul>
+
+                    } 
+
+                </div>
+            </div>
+        </div>
+        <Footer />
+    </div>
+}

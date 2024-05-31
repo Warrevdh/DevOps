@@ -1,0 +1,23 @@
+﻿.image-slider {
+    width: 350px;
+    overflow:hidden;
+    z-index: 1;
+}
+
+.slide-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 100%;
+    height: 550px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 756px) {
+    .image-slider {
+        display: none;
+    }
+}

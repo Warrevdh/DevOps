@@ -1,0 +1,160 @@
+﻿h3 {
+    color: #000;
+    font-family: Trirong;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112.9%; /* 58.708px */
+    position: relative;
+    margin-top: 35px;
+    margin-bottom: 50px;
+}
+
+h3::before {
+    content: "";
+    width: 85px;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+button {
+    font-weight: bolder;
+    background-color: #AADFDF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.datepicker {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.daily {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dailyhours {
+    width: 250px;
+}
+
+.dailyhours div {
+    display: flex;
+   justify-content: space-between;
+   margin-bottom: 10px;
+}
+
+.dailyhours input {
+    width: 100px;
+}
+
+.daily input {
+}
+.daily button {
+    margin-top: 50px;
+}
+
+.timeslotsDaily {
+    display: flex;
+    max-width: 700px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    gap: 12px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    width: 500px;
+}
+.right {
+    margin-top: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.weekday {
+    padding: 12px 12px;
+    background-color: white;
+    border-radius: 25px;
+    transition: transform 200ms ease-in-out;
+    padding: 20px 20px 20px 30px;
+    background-color: #a8dada
+}
+
+.weekday:hover {
+    transform: scale(1.01);
+    background-color: #b9f0f0;
+}
+
+.weeklyHours {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.timeslotsDaily .timeslots {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 650px;
+    gap: 12px;
+}
+
+.timeslotsDaily p {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.weekday > label {
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.timeday {
+    padding-left: 25px;
+}
+
+.timeday input {
+    margin-left: 25px;
+    width: 100px;
+}
+
+.timeslotsWeekly{
+    max-width: 700px;
+}
+
+.timeslotsWeekly .timeslots {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 650px;
+    gap: 12px;
+}
+
+.timeslotsWeekly p {
+    font-weight: 600;
+    font-size: 18px;
+}

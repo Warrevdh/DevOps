@@ -1,0 +1,40 @@
+﻿.doctor .info{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+.doctor .info h5{
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 154%; /* 27.72px */
+}
+.doctor .info p {
+    color: #000;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 45%;
+}
+.doctor img {
+    width: 177px;
+    height: 250px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    object-fit: cover;
+
+    margin-bottom: 5px;
+    transition: transform 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.doctor:hover img {
+    transform: scale(1.1);
+}
+
+

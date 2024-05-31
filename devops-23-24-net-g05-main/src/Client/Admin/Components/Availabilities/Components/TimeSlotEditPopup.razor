@@ -1,0 +1,23 @@
+﻿@if (Open)
+{
+    <div class="request-overlay @((Open) ? "open" : "")">
+        <div class="request">
+            <div class="icon">
+                <img src="./images/alert-triangle.svg" alt="x" />
+            </div>
+            <h4>Opgelet!</h4>
+            <p>Overlap is eigen verantwoordelijkheid!</p>
+            <div>
+                <label for="hour">Startuur: </label>
+                <input type="time" class="hour" @bind-value=@hour/>
+            </div>
+            <div>
+                <label for="duration">Duur: </label>
+                <input type="number" class="duur" @bind-value=@duration/>
+            </div>
+            <div class="buttons">
+                <button class="requestButton" @onclick="ClosePopUp">Opslaan</button>
+            </div>
+        </div>
+    </div>
+}

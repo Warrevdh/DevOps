@@ -1,0 +1,14 @@
+﻿<div class="field">
+    <label class="label">Naam groep</label>
+    <div class="control">
+        <InputText class="input" @bind-Value="Group.Name"/>
+        @* <ValidationMessage For="() => group.Name"/> *@
+    </div>
+</div>
+<div class="field">
+    <label class="label">Geef een nummer in voor de volgorde van de groepen</label>
+    <div class="control">
+        <InputNumber class="input" @bind-Value="Group.Sequence" />
+        @* <ValidationMessage For="() => group.Name" /> *@
+    </div>
+</div>

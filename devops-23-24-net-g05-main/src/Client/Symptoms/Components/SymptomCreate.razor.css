@@ -1,0 +1,15 @@
+﻿.formContent {
+    display:flex;
+}
+
+.formContent button {
+    border:none;
+    background-color:white;
+}
+
+.formContent button svg path {
+    color: #4AE884;
+}
+.formContent button svg {
+    margin-left:10px;
+}

@@ -1,0 +1,37 @@
+﻿@page "/Afspraak/details"
+
+<PageTitle>Afspraak</PageTitle>
+
+
+<div class="afspraak-details">
+    <div class="header">
+        <h3>Afspraak Details</h3>
+    </div>
+
+    <div class="content">
+        <p>Welkom bij onze online afsprakenservice! Om ervoor te zorgen dat u snel en gemakkelijk toegang heeft tot uw afspraken, vragen wij u vriendelijk uw e-mailadres hieronder in te voeren. Nadat u <i>uw e-mailadres</i> hebt ingevoerd, ontvangt u een bevestigingsmail met een unieke link naar uw persoonlijke afspraakoverzicht.</p>
+        <p>Gelieve ervoor te zorgen dat u hetzelfde e-mailadres gebruikt dat u aan ons hebt verstrekt tijdens uw vorige bezoeken. Indien nodig, kunt u <strong>contact met ons opnemen</strong> om uw contactgegevens bij te werken.</p>
+        <p>Dank u voor het gebruik van onze online diensten en wij kijken ernaar uit u binnenkort te verwelkomen!</p>
+    </div>
+
+    <EditForm Model="appointmentDetailsModel" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="username">Email</label>
+            <InputText id="email" @bind-Value="appointmentDetailsModel.Email" class="input" />
+        </div>
+
+        <button type="submit">Zoek Afspraken</button>
+    </EditForm>
+
+    @if (getAppointmentsSucceeded)
+    {
+        <p class="alert alert-success">Login successful!</p>
+    }
+    else if (getAppointmentsFailed)
+    {
+        <p class="alert alert-danger">Login failed. Please check your credentials.</p>
+    }
+</div>

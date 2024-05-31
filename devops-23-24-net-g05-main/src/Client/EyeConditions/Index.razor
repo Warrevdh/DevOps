@@ -1,0 +1,67 @@
+﻿@page "/Oogaandoeningen"
+
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+<PageTitle>Oogaandoeningen</PageTitle>
+
+<div class="oogaandoeningen">
+	<div class="header">
+		<h3>Oogaandoeningen</h3>
+        <div class="filter" >
+            <AuthorizeView>
+				    <Authorized>
+                    <button class="create" @onclick="NavigateToCreate">
+                        <img src="./images/plus.svg" alt="add" title="Voeg oogaandoening toe"/>
+                        Voeg toe
+                    </button>
+                </Authorized>
+            </AuthorizeView>
+            @if (symptoms is null)
+            {
+                <div class="loading">
+                    <Loader />
+                </div>
+            }
+            else
+            {
+                if (!symptoms.Any())
+                {
+                    <div class="notification">
+                        Geen symptomen gevonden...
+                    </div>
+                }
+                else
+                {
+                    <EyeConditionFilter Searchterm="@Searchterm" OnListUpdated="UpdateList" Symptoms="@symptoms" />
+                }
+            }
+		</div>
+	</div>
+    <div class="content" data-test-id="eyeconditions">
+        @if (eyeConditions is null)
+        {
+            <div class="loading">
+                <Loader />
+            </div>
+        }
+        else
+        {
+            if (!eyeConditions.Any())
+            {
+                <div class="notification">
+                    Geen oogaandoeningen gevonden met deze zoek criteria...
+                </div>
+            }
+            else
+            {
+                @foreach (var item in eyeConditions)
+                {
+                    <EyeConditionCard EyeCondition="item" OnDeleteRequested="ToggleDeletePopUp"/>
+                }
+            }
+        }
+	</div>
+    <DeletePopUp Open="@open" ObjectName="oogaandoening" ToggleClose="CloseDeletePopUp" RequestDelete="ConfirmDelete" />
+    <InfoPopUp Open="@openInfo" Message="Momenteel is het nog niet mogelijk om een oogaandoening te bewerken." ToggleClose="ToglleInfoPopUp" />
+    <Footer />
+</div>

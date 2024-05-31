@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Oogarts</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="_content/Radzen.Blazor/css/material-base.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="css/site.css" rel="stylesheet" />
+
+    <link href="Client.styles.css" rel="stylesheet" />
+    <script src="slider.js"></script>
+    <style>
+        .app-loader {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: block;
+            margin: 15px auto;
+            position: relative;
+            color: #000;
+            box-sizing: border-box;
+            animation: animloader 1s linear infinite alternate;
+        }
+
+        @keyframes animloader {
+            0% {
+                box-shadow: -38px -6px, -14px 6px, 14px -6px;
+            }
+
+            33% {
+                box-shadow: -38px 6px, -14px -6px, 14px 6px;
+            }
+
+            66% {
+                box-shadow: -38px -6px, -14px 6px, 14px -6px;
+            }
+
+            100% {
+                box-shadow: -38px 6px, -14px -6px, 14px 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="app-loader">
+            <span class="loader"></span>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication/AuthenticationService.js"></script>
+    <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+</body>
+
+</html>

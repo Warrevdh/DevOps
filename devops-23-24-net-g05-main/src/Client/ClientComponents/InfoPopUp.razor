@@ -1,0 +1,12 @@
+﻿<div class="request-overlay @((Open) ? "open" : "")">
+    <div class="request">
+        <div class="icon">
+            <img src="./images/alert-triangle.svg" alt="x" />
+        </div>
+        <h4>Opgelet!</h4>
+        <p>@Message</p>
+        <div class="buttons">
+            <button class="requestButton" @onclick="ClosePopUp">Ja, Ik begrijp het</button>
+        </div>
+    </div>
+</div>

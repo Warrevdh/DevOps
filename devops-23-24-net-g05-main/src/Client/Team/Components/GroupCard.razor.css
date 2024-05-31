@@ -1,0 +1,47 @@
+﻿h4 {
+    color: #000;
+    font-family: Trirong;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112.9%; /* 36.128px */
+
+    position: relative;
+}
+
+h4::before {
+    content: "";
+    width: 65px;
+    height: 2px;
+    background-color: black;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+    margin: 15px 0;
+
+    width: min-content;
+}
+.group-header  .delete_button{
+    border: none;
+    border-radius: 10px;
+    outline: none;
+
+    background-color: #ed5b45;
+
+    width: 35px;
+    height: 35px;
+
+    transition: transform 200ms ease-in-out;
+}
+.group-header  .delete_button:hover{
+    transform: scale(1.08);
+}

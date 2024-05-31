@@ -1,0 +1,119 @@
+﻿.home {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%; 
+    min-height: calc(100vh - 155px);
+
+    gap: 30px;
+
+    position: relative;
+}
+.icon-row {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    gap: 15px;
+}
+.icon-row p{
+    margin: 0;
+}
+.bg-bol {
+    position: absolute;
+}
+
+.bg-bol:first-of-type {
+    top: 60px;
+    left: 200px;
+    z-index: -1000;
+}
+.bg-bol:nth-of-type(2) {
+    top: 50px;
+    left: 190px;
+    z-index: -1001;
+}
+.bg-bol:nth-of-type(3) {
+    top: 560px;
+    left: -80px;
+    z-index: -1000;
+}
+.bg-bol:nth-of-type(4) {
+    top: 695px;
+    left: 60px;
+    z-index: -1001;
+}
+
+.information h1 {
+    font-family: 'Trirong', sans-serif;
+    font-size: 56px;
+}
+
+.information {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.infoContainer {
+    position:relative;
+    width:75%;
+    margin-left: 50px;
+    height: 550px;
+}
+
+.afspraakButton {
+    font-weight: bolder;
+    background-color: #AADFDF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: all 0.3s ease; 
+}
+
+.afspraakButton:hover {
+    transform: scale(1.05);
+}
+
+
+.container {
+    font-family: 'Poppins', sans-serif;
+    margin: 0 auto;
+    width: 100%;
+    height: calc(100vh - 40px);
+    margin-top: 1%;
+}
+
+.contactLink {
+    text-decoration: none;
+    cursor: pointer;
+    color: #2B2B2B;
+}
+.contactLink .icon{
+    transition: margin-left 200ms ease-in-out;
+}
+.contactLink:hover .icon{
+    margin-left: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 25px;
+}
+
+.contactInfo {
+    margin-top: 25px;
+    gap: 20px;    
+    flex-flow: row wrap;
+}
+@media only screen and (max-width: 745px) {
+    .information h1 {
+        font-size: 38px;
+    }
+}
+@media only screen and (max-width: 756px) {
+    .infoContainer {
+        margin-left: 0;
+    }
+}

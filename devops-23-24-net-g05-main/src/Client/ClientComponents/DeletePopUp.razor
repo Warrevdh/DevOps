@@ -1,0 +1,13 @@
+﻿<div class="request-overlay @((Open) ? "open" : "")">
+    <div class="request">
+        <div class="icon">
+            <img src="./images/x.svg" alt="x" />
+        </div>
+        <h4>Verwijder @ObjectName</h4>
+        <p>U staat op het punt om een @ObjectName te verwijderen. Bent u zeker dat u verder wilt gaan?</p>
+        <div class="buttons">
+            <button class="requestButton" @onclick="CancelDeleteRequest">Nee, Behoud het</button>
+            <button class="requestButton" @onclick="ConfirmDelete">Ja, Verwijder</button>
+        </div>
+    </div>
+</div>

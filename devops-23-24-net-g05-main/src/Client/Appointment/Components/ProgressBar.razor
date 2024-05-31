@@ -1,0 +1,20 @@
+﻿<div class="progressbar">
+	<div class="@(Active >= 2 ? "step active" : "step")">
+		<div class="icon">
+			<img src="./images/Datesvg.svg" alt="Date Icon"/>
+		</div>
+		<div class="label">Datum & tijd</div>
+	</div>
+	<div class=" @(Active >= 2 ? "step active" : "step" )">
+		<div class="icon">
+			<img src="./images/clipboard.svg" alt="Clipboard Icon" />
+		</div>
+		<div class="label">Gegevens</div>
+	</div>
+	<div class="@(Active == 3 ? "step active" : "step")">
+		<div class="icon">
+			<img src="./images/check-square.svg" alt="Check Square Icon" />
+		</div>
+		<div class="label">Bevestiging</div>
+	</div>
+</div>

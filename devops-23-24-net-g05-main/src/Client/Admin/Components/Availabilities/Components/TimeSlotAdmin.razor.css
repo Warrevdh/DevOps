@@ -1,0 +1,56 @@
+﻿.slot {
+    position: relative;
+    width: 115px;
+    height: 60px;
+   
+    overflow: hidden; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slot label {
+    width: 100%;
+    height: 100%;
+
+     border-radius: 15px;
+    background: #E5E5E5;
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+
+.slot input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor:pointer;
+}
+
+.slot input[type="radio"]:hover + label {
+    background: #AADFDF;
+    font-weight: 500;
+    font-size: 21px;
+}
+
+.slot input[type="radio"]:checked + label {
+    background: #AADFDF;
+    font-weight: 500;
+    font-size: 21px;
+}
+

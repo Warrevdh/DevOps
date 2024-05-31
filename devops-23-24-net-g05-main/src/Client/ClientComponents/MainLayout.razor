@@ -1,0 +1,19 @@
+@using Client.Admin.Components
+@inherits LayoutComponentBase
+<PageTitle>Oogarts</PageTitle>
+
+<div class="page">
+    @if (!isAdminPage)
+    {
+        <nav>
+            <NavBar />
+        </nav>
+    }
+    <main>
+        <article>
+            @Body
+        </article>   
+    </main>
+    <Chatbot />
+</div>
+<RadzenComponents />

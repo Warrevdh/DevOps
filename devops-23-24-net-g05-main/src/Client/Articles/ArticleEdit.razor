@@ -1,0 +1,70 @@
+@page "/Nieuws/edit/{Id:long}"
+@using Radzen
+@using Radzen.Blazor
+@using FluentValidation
+@inject IJSRuntime JSRuntime
+@attribute [Authorize(Roles = "Administrator")]
+
+<div class="create-article">
+    <div class="header">
+        <h3>Voeg een artikel toe</h3>
+    </div>
+    <div class="content">
+        <EditForm Model=@article OnValidSubmit=@EditArticleAsync>
+            <div class="field">
+                <label class="label">Titel artikel</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value=@article.Title />
+                    <ValidationMessage For="() => article.Title" />
+                </div>
+            </div>
+            @* <div class="field">
+                <div class="file has-name is-boxed is-fullwidth">
+                    <label class="file-label">
+                       
+                        <InputFile class="file-input" OnChange=@LoadImage accept="image/*" />
+                    </label>
+                </div>
+                <ValidationMessage For="() => article.ImageUrl" />
+                @if (!string.IsNullOrEmpty(article.ImageUrl))
+                {
+                    <img src="@article.ImageUrl" alt="Article Image" class="displayed-image" style="max-width: 30%;"/>
+                }
+            </div> *@
+            <div class="field">
+                <label class="label">Omschrijving</label>
+                <InputTextArea maxLength="350" class="input" @bind-Value=@article.Description />
+                <ValidationMessage For="() => article.Description" />
+            </div>
+            <div class="field">
+                <label class="label">Inhoud</label>
+                <RadzenHtmlEditor @bind-Value=article.Content Change=@OnChange>
+                    <RadzenHtmlEditorUndo />
+                    <RadzenHtmlEditorRedo />
+                    <RadzenHtmlEditorSeparator />
+                    <RadzenHtmlEditorFontName />
+                    <RadzenHtmlEditorFontSize />
+                    <RadzenHtmlEditorSeparator />
+                    <RadzenHtmlEditorBold />
+                    <RadzenHtmlEditorItalic />
+                    <RadzenHtmlEditorUnderline />
+                    <RadzenHtmlEditorStrikeThrough />
+                    <RadzenHtmlEditorSeparator />
+                    <RadzenHtmlEditorAlignLeft />
+                    <RadzenHtmlEditorAlignCenter />
+                    <RadzenHtmlEditorAlignRight />
+                    <RadzenHtmlEditorSeparator />
+                    <RadzenHtmlEditorColor />
+                    <RadzenHtmlEditorBackground />
+                    <RadzenHtmlEditorRemoveFormat />
+                </RadzenHtmlEditor>
+                <ValidationMessage For="() => article.Content" />
+            </div>
+            <div class="buttons">
+                <a href="Nieuws" class="cancelBtn">Annuleren</a>
+                <button class="button is-link is-fullwidth acceptBtn" type="submit">Wijzigen</button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+<link rel="stylesheet" href="_content/Radzen.Blazor/css/material-base.css">

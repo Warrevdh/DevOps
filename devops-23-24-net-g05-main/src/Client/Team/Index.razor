@@ -1,0 +1,78 @@
+﻿@page "/Team"
+
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+<PageTitle>Team</PageTitle>
+
+@if (groups is null || employees is null)
+{
+    <Loader/>
+}
+else
+{
+	<div class="team">
+		<div class="team header">
+			<h3>Ons Team</h3>
+			<p>
+				Onze ervaren team van oogartsen zijn gepassioneerd en toegewijd aan uw visuele gezondheid. Of het nu gaat om een eenvoudige controle of een complexe procedure, vertrouw op onze experts voor hoogwaardige zorg en een heldere, gezonde visie.
+			</p>
+			<AuthorizeView>
+				<Authorized>
+					<div class="add-header">
+						<button class="create" @onclick="NavigateToCreateEmployee">
+							<img src="./images/plus.svg" alt="add" title="Voeg een medewerker toe" />
+							Voeg een medewerker toe
+						</button>
+						<button class="create" @onclick="NavigateToCreateGroup">
+							<img src="./images/plus.svg" alt="add" title="Voeg groep toe" />
+							Voeg een groep toe
+						</button>
+						<button class="create" @onclick="NavigateToEditGroup">
+							<img src="./images/plus.svg" alt="add" title="Wijzig groepen" />
+							Wijzig groepen
+						</button>
+					</div>
+				</Authorized>
+			</AuthorizeView>
+				
+			<img class="bg-circle" src="./images/Ellipse 12.svg" alt="background bol"/>
+			<img class="bg-circle" src="./images/Ellipse 13.svg" alt="background bol" />
+		</div>
+		<div class="doctors flex" data-test-id="team">
+			@foreach (var group in groups)
+			{
+				<GroupCard Group="group" Admin="@admin" DeleteGroup="RequestDeleteGroup" />
+
+				var employeesInGroup = employees.Where(e => e.Group is not null && e.Group.Id == group.Id).ToList();
+
+				if (group.Id == 2 && !employeesInGroup.Any())
+				{
+					<p class="no-employees">
+						Momenteel geen medewerkers verkrijgbaar.
+					</p>
+				}
+				else if (employeesInGroup.Any())
+				{
+					<div class="team specialisation flex">
+						@foreach (var employee in employeesInGroup)
+						{
+							<EmployeeCard ImageUrl="@Images[1]" Employee="employee" Admin="@admin" ToggleDelete="ToggleEmployeeDelete" SelectMoveEmployee="RequestMoveEmployee" />
+						}
+					</div>
+				}
+				else
+				{
+					<p class="no-employees">
+						Geen medewerkers in deze groep.
+					</p>
+				}
+			}
+
+		</div>
+		<DeletePopUp Open="@openDelete" ObjectName="groep" ToggleClose="CancelDeleteGroup" RequestDelete="ConfirmDeleteGroup" />
+		<InfoPopUp Open="@openInfo" Message="Zorg ervoor dat de groep leeg is alvorens deze te verwijderen!" ToggleClose="ToglleInfoPopUp" />
+		<ConfirmationPopUp Open="@openMove" ObjectHeader="Verplaats werknemer" ObjectBody="U staat op het punt om een werknemer te verplaatsen. Bent u zeker dat u verder wilt gaan?" ConfirmButtonContent="Ja, Verplaats" ToggleClose="CloseMoveInfo" RequestConfirm="ConfirmMoveEmployee" />
+		<DeletePopUp Open="@open" ObjectName="werknemer" ToggleClose="CloseDeletePopUp" RequestDelete="ConfirmDelete" />
+		<Footer />
+	</div>
+}

@@ -1,0 +1,171 @@
+﻿.appointment {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 155px);
+}
+
+.appointment .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+}
+
+.appointment .header h3 {
+    color: #000;
+    font-family: Trirong;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112.9%; /* 58.708px */
+    position: relative;
+}
+
+.appointment .header h3::before {
+    content: "";
+    width: 85px;
+    height: 3px;
+    background-color: black;
+
+    border-radius: 5px;
+    position: absolute;
+    bottom: -5px; 
+    left: 0;
+}
+.appointment .body .header h5 {
+    color: #000;
+    font-family: Trirong;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112.9%; /* 58.708px */
+    position: relative;
+}
+
+.appointment .body .header h5::before {
+    content: "";
+    width: 85px;
+    height: 3px;
+    background-color: black;
+
+    border-radius: 5px;
+    position: absolute;
+    bottom: -5px; 
+    left: 0;
+}
+
+.appointment .datum {
+    max-width: 500px;
+}
+
+.appointment .body {
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+
+    width: 100%;
+    gap: 150px;
+    position: relative;
+}
+.appointment .body .tijd .slots{
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+    flex-flow: row wrap;
+
+    gap: 15px;
+    max-width: 750px;
+
+    margin-top: 25px;
+}
+.appointment .body .tijd {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 25px;
+    max-width: 635px;
+}
+
+.buttons {
+    display: flex;
+    align-self: flex-end;
+    flex-flow: wrap;
+}
+
+.buttons button{
+    border:none;
+    outline: none;
+}
+.buttons .cancel{
+    display: flex;
+    width: 168px;
+    height: 49px;
+    padding: 6px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: none;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 154%; /* 27.72px */
+    text-decoration-line: underline;
+}
+.buttons .next{
+    display: flex;
+    width: 168px;
+    height: 49px;
+    padding: 6px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #AADFDF;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 154%; /* 27.72px */
+}
+
+::deep .rz-calendar-inline {
+    border-radius: 20px !important;
+    border: none !important;
+    width: 100%;
+    margin: 25px 25px 25px 0;
+}
+::deep .rz-state-active {
+    background-color: #AADFDF !important;
+    color: black !important;
+    font-weight: bold !important;
+}
+
+::deep .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.no-select {
+    min-width:700px;
+}
+
+@media only screen and (max-width: 915px)
+{
+    .appointment .body {
+        flex-direction: column;
+        gap: 50px;
+        align-items: flex-start;
+
+        margin-bottom: 125px;
+    }
+}

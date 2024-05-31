@@ -1,0 +1,25 @@
+﻿@page "/Afspraak/Confirm";
+@using Client.Appointment.Components;
+
+<PageTitle>Afspraak</PageTitle>
+
+
+<div class="appointment">
+	<div class="header">
+		<h3>Afspraak vastgelegd</h3>
+	</div>
+    <div class="content">
+        <ProgressBar Active="3" />
+        <div class="body">
+			<div class="container flex">
+				<div class="confirmationtxt">
+					Uw afspraak ligt vast.
+					Tot binnenkort.
+				</div>
+				<div class="btncontainer">
+					<button class="button homebtn" @onclick=HandleClick>OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

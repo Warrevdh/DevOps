@@ -1,0 +1,35 @@
+@inject IJSRuntime JSRuntime
+
+<EditForm Model=@NewAppointment class="form" OnValidSubmit=@CreateAppointmentAsync>
+	<FluentValidationValidator />
+
+	<div class="form-row">
+		<RadzenTextBox @bind-Value="NewAppointment.Patient.LastName" Style="width: 100%; border-radius:10px; border:none;" Placeholder="Achternaam" />
+		<ValidationMessage For="() => NewAppointment.Patient.LastName" />
+		<RadzenTextBox @bind-Value="NewAppointment.Patient.FirstName" Style="width: 100%; border-radius:10px; border:none;" Placeholder="Voornaam" />
+		<ValidationMessage For="() => NewAppointment.Patient.FirstName" />
+	</div>
+
+	<div class="form-row">
+		<RadzenTextBox @bind-Value="NewAppointment.Patient.Email" Style="width: 100%; border-radius:10px; border:none;" Placeholder="Email" />
+		<ValidationMessage For="() => NewAppointment.Patient.Email" />
+		<RadzenTextBox @bind-Value="NewAppointment.Patient.PhoneNumber" Style="width: 100%; border-radius:10px; border:none;" Placeholder="Gsm Nr." />
+		<ValidationMessage For="() => NewAppointment.Patient.PhoneNumber" />
+	</div>
+	<div class="form-row">
+		<RadzenDatePicker @bind-Value="NewAppointment.Patient.BirthDate" Style="width: 100%; border-radius:10px; border:none;" Placeholder="Geboortedatum" DateFormat="dd/MM/yyyy" />
+		<ValidationMessage For="() => NewAppointment.Patient.BirthDate" />
+	</div>
+	<div class="form-row">
+		<RadzenTextArea @bind-Value="NewAppointment.Reason" Style="width: 100%; border-radius:10px; border:none;" Placeholder="Klachten" />
+	</div>
+	<div class="form-row">
+		<RadzenTextArea @bind-Value="NewAppointment.Note" Style="width: 100%; border-radius:10px; border:none;" Placeholder="Opmerkingen" />
+	</div>
+	<div class="form-row">
+		<div class="buttons">
+			<button class="cancel" @onclick=Reset>annuleer</button>
+			<button class="next">Volgende</button>
+		</div>
+	</div>
+</EditForm>

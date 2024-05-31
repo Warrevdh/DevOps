@@ -1,0 +1,79 @@
+﻿@page "/Afspraak"
+@using Client.Appointment.Components;
+@using Shared.Users.Team.Doctors;
+
+<PageTitle>Afspraak</PageTitle>
+
+<div class="appointment">
+	<div class="header">
+		<h3>Afspraak details</h3>
+	</div>
+    <div class="content">
+        <ProgressBar Active=@ActiveCount />
+        <div class="body">
+            @if(ActiveCount == 1)
+            {
+                <div class="datum">
+                    <div class="header">
+                        <h5>Dokter & Datum</h5>
+                    </div>
+                    <div class="dokter" data-test-id="doctors">
+                        <RadzenListBox AllowClear="true" AllowFiltering="true" @bind-Value=@value Data=@doctors
+                            TextProperty="Firstname" ValueProperty="Id" Change=@OnChangeDr
+                                       Style="width: 100%; height:200px; border: none; border-radius: 20px; margin-top: 25px;">
+                            <Template>
+                                Dr. @((context as DoctorDto.Index)!.Firstname) @((context as DoctorDto.Index)!.Lastname)
+                            </Template>
+                        </RadzenListBox>
+                    </div>
+                    <div class=" rz-text-align-center">
+                        <RadzenDatePicker @bind-Value=@DateValue Inline="true" Change=@OnChangeDate DateFormat="d" DateRender=@DateRenderSpecial />
+                    </div>
+                </div>
+                <div class="tijd">
+                    <div class="header">
+                        <h5>Beschikbare uren</h5>
+                    </div>
+                    <div class="time-slots">
+                        <div class="slots">
+                           @if (value == -1)
+                            {
+                                <div class="no-select">
+                                    Selecteer een dokter en datum om de beschikbare timeslots te verkrijgen.
+                                </div>
+                            }
+                            else
+                            {
+                                @if (!loading)
+                                {
+                                    @if (timeslots.Count() == 0)
+                                    {
+                                        <div class="notification">
+                                            Geen plaatsen gevonden...
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @foreach (var ts in timeslots)
+                                        {
+                                            <TimeSlot Slot="@ts" SelectTimeslot="() => SelectTimeslot(ts)"/>
+                                        }
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="cancel" @onclick=Reset>annuleer</button>
+                        <button class="next" @onclick=Next>Volgende</button>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <PatientForm NewAppointment=@newAppointment/>
+            }
+        </div>
+    </div>
+    <Footer />
+</div>

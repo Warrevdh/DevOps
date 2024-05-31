@@ -1,0 +1,13 @@
+﻿<div class="request-overlay @((Open) ? "open" : "")">
+    <div class="request">
+        <div class="icon">
+            <img src="./images/alert.svg" alt="x" />
+        </div>
+        <h4>@ObjectHeader</h4>
+        <p>@ObjectBody</p>
+        <div class="buttons">
+            <button class="requestButton" @onclick="CancelRequest">Nee, Behoud het</button>
+            <button class="requestButton" @onclick="ConfirmRequest">@ConfirmButtonContent</button>
+        </div>
+    </div>
+</div>

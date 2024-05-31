@@ -1,0 +1,35 @@
+﻿@page "/Team/Groep/Nieuw"
+@using Radzen
+@using Radzen.Blazor
+@using FluentValidation
+@inject IJSRuntime JSRuntime
+
+<div class="create-group">
+    <div class="header">
+        <h3>Voeg een groep toe</h3>
+    </div>
+    <div class="content">
+        <EditForm Model=@group OnValidSubmit=@CreateGroupAsync>
+            <div class="field">
+                <label class="label">Naam groep</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="group.Name" />
+                    @* <ValidationMessage For="() => group.Name"/> *@
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Geef een nummer in voor de volgorde van de groepen (dit kan later nog aangepast worden)</label>
+                <div class="control">
+                    <InputNumber class="input" @bind-Value="group.Sequence" />
+                    @* <ValidationMessage For="() => group.Name" /> *@
+                </div>
+            </div>
+
+            <div class="buttons">
+                <a href="Team" class="cancelBtn">Annuleren</a>
+                <button class="button is-link is-fullwidth acceptBtn" type="submit">Toevoegen</button>         
+            </div>
+        </EditForm>
+    </div>
+</div>
+<link rel="stylesheet" href="_content/Radzen.Blazor/css/material-base.css">

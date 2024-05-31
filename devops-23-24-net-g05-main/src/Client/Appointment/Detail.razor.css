@@ -1,0 +1,69 @@
+﻿﻿﻿.afspraak-details {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+}
+
+.afspraak-details .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+    .afspraak-details .header h3 {
+        color: #000;
+        font-family: Trirong;
+        font-size: 52px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 112.9%; /* 58.708px */
+        position: relative;
+    }
+
+        .afspraak-details .header h3::before {
+            content: "";
+            width: 85px;
+            height: 3px;
+            background-color: black;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+.afspraak-details .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: flex-start;
+}
+
+.afspraak-details ::deep .input {
+    max-width: 350px !important;
+    border-radius: 7.5px;
+    background: #fff;
+    padding: 10px;
+    border: none;
+    outline: none;
+    transition: all 300ms ease-in-out;
+}
+
+    .afspraak-details ::deep .input:focus {
+        outline: 3px solid #E7E7E7;
+    }
+.afspraak-details ::deep .input:active {
+  background:#fff;
+}
+
+.afspraak-details button {
+    font-weight: bolder;
+    background-color: #AADFDF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+}

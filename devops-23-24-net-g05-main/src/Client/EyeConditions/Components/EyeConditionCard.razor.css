@@ -1,0 +1,140 @@
+﻿
+.oogaandoening {
+    width: 100%;
+
+    position: relative;
+    display :flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 35px;
+
+    padding: 12px 12px;
+
+    background-color: white;
+    border-radius: 25px;
+
+    transition: transform 200ms ease-in-out;
+}
+.oogaandoening:hover {
+    transform: scale(1.01);
+}
+
+.oogaandoening .afbeelding {
+    min-width: 235px;
+    max-width: 235px;
+    height: 150px;
+    object-fit: cover; 
+}
+
+.oogaandoening .afbeelding img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover; 
+}
+
+.oogaandoening .content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding-top: 0;
+}
+
+.oogaandoening .content .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    max-width: 100%;
+    overflow:hidden;
+}
+
+.oogaandoening .content .text h5 {
+    color: #000;
+    font-family: Trirong;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112.9%;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.oogaandoening .content .text p {
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 154%;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.oogaandoening .content .buttons {
+    display: flex;
+    gap: 8px;
+
+    position:absolute;
+    top:3%; 
+    right:0.8%; 
+}
+
+.oogaandoening .content .buttons button{
+    border: none;
+    border-radius: 10px;
+    outline: none;
+
+    margin: 5px 0px;
+
+    padding: 5px;
+    transition: transform 200ms ease-in-out;
+}
+.oogaandoening .content .buttons button:hover{
+    transform: scale(1.1);
+}
+
+.oogaandoening .content .delete_button {
+    background-color: #ed5b45;
+}
+.oogaandoening .content .delete_button img{
+       width: 100%;
+       height: 100%;
+}
+
+.oogaandoening .content .edit_button {
+    background-color: #edd845;
+}
+.oogaandoening .content .edit_button:hover {
+    background-color: #d3c235;
+}
+
+.oogaandoening .content .edit_button img{
+       width: 100%;
+       height: 100%;
+}
+
+.oogaandoening .content button {
+    border: none;
+    background: none;
+    outline: none;
+
+    color: #5C96C1;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 154%; /* 24.64px */
+    text-transform: uppercase;
+}
+
+
+@media only screen and (max-width: 750px) {
+    .oogaandoening .afbeelding {
+        display: none;
+    }
+}

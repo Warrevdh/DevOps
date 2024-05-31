@@ -1,0 +1,145 @@
+﻿.form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    gap: 10px;
+
+    margin: 5px 0;
+}
+
+::deep .rz-inputtext {
+    max-width: 100%;
+    border-radius: 10px;
+    border: none;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.col1 {
+    padding-right: 20px;
+}
+
+.col2 {
+    padding-left: 20px;
+}
+
+.row {
+    width: 50%;
+}
+
+::deep .input {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #E5E5E5;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+}
+
+.buttons {
+    display: flex;
+    align-self: flex-end;
+    margin-top: 15px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.buttons button{
+    border:none;
+    outline: none;
+}
+.buttons .cancel{
+    display: flex;
+    width: 168px;
+    height: 49px;
+    padding: 6px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: none;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 154%; /* 27.72px */
+    text-decoration-line: underline;
+}
+.buttons .next{
+    display: flex;
+    width: 168px;
+    height: 49px;
+    padding: 6px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #AADFDF;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 154%; /* 27.72px */
+}
+
+
+.bottombtn {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: end;
+}
+
+.cancelbtn {
+    color: black;
+    border: none;
+    text-decoration: underline;
+    margin-right: 20px;
+}
+
+.nextbtn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    background-color: #AADFDF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+textarea {
+    outline:none !important;
+}
+
+textarea:focus {
+    outline:none !important;
+}
+textarea:active {
+    outline:none !important;
+}
+
+@media only screen and (max-width: 945px)
+{
+    .form .form-row{
+        flex-direction: column;
+        max-width: 500px;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .form .form-row {
+        flex-direction: column;
+        max-width: 300px;
+    }
+}

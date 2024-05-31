@@ -1,0 +1,37 @@
+﻿@if(Employee is not null)
+{
+	<div>
+		<div class="doctor flex" data-test-id="teammember">
+			<img src="@Employee.Image" alt="Doctor" class="doctor-img"/>
+			<div class="info">
+				<p @onclick="@NavigateToDetail">@Employee.Firstname @Employee.Lastname</p>
+				@if (Admin)
+				{
+					<select class="select_button" @onchange="HandleOnchange">
+						@if (groups is not null)
+						{
+							@foreach (var gr in groups)
+							{
+								@if (gr.Id == Employee.Group.Id)
+								{
+									<option value=@gr.Id selected>@gr.Name</option>
+								} else
+								{
+									<option value=@gr.Id>@gr.Name</option>
+								}
+
+							}
+						}
+					</select>
+				}	
+			</div>
+			@if(Admin)
+			{
+				<button class="delete_button" @onclick="RequestDeleteEmployee">
+					<img class="delete_image" src="./images/trash-2.svg" alt="delete button" title="Verwijder Medewerker" />
+				</button>
+			}
+		</div>
+	</div>
+}
+

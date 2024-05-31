@@ -1,0 +1,53 @@
+﻿@page "/Team/edit/{employeeId:long}"
+@inject IJSRuntime JSRuntime
+@attribute [Authorize(Roles = "Administrator")]
+
+<div class="edit-employee">
+    <div class="header">
+        <h3>Wijzig teamlid toe</h3>
+    </div>
+    <div class="content">
+        <EditForm Model=@employee OnValidSubmit=@EditEmployeeAsync>
+            <DataAnnotationsValidator />
+            <div class="field">
+                <label class="label">Voornaam</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="employee.Firstname" required />
+                    <ValidationMessage For="() => employee.Firstname" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Achternaam</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="employee.Lastname" required />
+                    <ValidationMessage For="() => employee.Lastname" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Geboortedatum</label>
+                <div class="control">
+                    <InputDate class="input" @bind-Value="employee.Birthdate" required />
+                    <ValidationMessage For="() => employee.Birthdate" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="employee.Email" type="email" required />
+                    <ValidationMessage For="() => employee.Email" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Telefoonnummer</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="employee.Phonenumber" type="tel" required />
+                    <ValidationMessage For="() => employee.Phonenumber" />
+                </div>
+            </div>
+            <div class="buttons">
+                <a href="Admin" class="cancelBtn">Annuleren</a>
+                <button class="button is-link is-fullwidth acceptBtn" type="submit">Wijzigen</button>
+            </div>
+        </EditForm>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@using Shared.Articles;
+<RadzenButton ButtonStyle="ButtonStyle.Success" Icon="add_circle_outline" class="mt-2 mb-4" Text="Voeg nieuw artikel toe" Click="@CreateArticle" />
+<RadzenDataGrid @ref="articleGrid" GridLines="Radzen.DataGridGridLines.Vertical" AllowAlternatingRows="true" AllowPaging="true" PageSize="3" AllowSorting="true" Data="@articles" TItem="ArticleDto.Index" ColumnWidth="200px">
+    <Columns>
+        <RadzenDataGridColumn TItem="ArticleDto.Index" Property="Id" Title="ID" Width="50px" />
+        <RadzenDataGridColumn TItem="ArticleDto.Index" Property="Title" Title="Naam" Width="100px" />
+        <RadzenDataGridColumn TItem="ArticleDto.Index" Property="Description" Title="Beschrijving" Width="200px" />
+        <RadzenDataGridColumn TItem="ArticleDto.Index" Sortable="false" Property="ImageUrl" Title="Afbeelding" Width="100px">
+            <Template Context="article">
+                <RadzenImage Path="@article.ImageUrl" style="width: 225px; height: 150px; margin-right: 6px;" />
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="ArticleDto.Index" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" FrozenPosition="FrozenColumnPosition.Right" Width="50px">
+            <Template Context="article">
+                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium" Click="@(args => EditRow(article))" />
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Variant="Variant.Flat" Shade="Shade.Lighter" Size="ButtonSize.Medium" class="my-1 ms-1" Click="@(args => DeleteRow(article))" @onclick:stopPropagation="true" />
+            </Template>
+        </RadzenDataGridColumn>
+    </Columns>
+</RadzenDataGrid>
+
+<DeletePopUp Open="@open" ObjectName="article" ToggleClose="CloseDeletePopUp" RequestDelete="ConfirmDelete" />

@@ -1,0 +1,13 @@
+﻿@inject IJSRuntime JSRuntime
+<EditForm Model=@symptom OnValidSubmit=@CreateSymptomAsync>
+    <div class="formContent">
+        <div class="field">
+           <label class="label">Naam</label>
+            <InputText class="input" @bind-Value="symptom.Name" />
+            <ValidationMessage For="() => symptom.Name" />
+        </div>
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 8 8"><path fill="currentColor" d="m6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3L0 4.41l.72.72l1.5 1.5l.69.72l.72-.72l3.5-3.5l.72-.72L6.41 1z" /></svg>
+        </button>
+    </div>
+</EditForm>

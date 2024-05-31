@@ -1,0 +1,35 @@
+# docker-compose.yml
+
+version: '3.8'
+services:
+  mysql:
+    image: mysql
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Eyedoctor1!
+      MYSQL_DATABASE: oogarts
+      MYSQL_USER: devusr
+      MYSQL_PASSWORD: devpwd
+    ports:
+      - '3306:3306'
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
+
+  oogarts:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: oogarts_container
+    ports:
+      - '5050:80'
+    environment:
+      DOTNET_ENVIRONMENT: Production
+      DOTNET_ConnectionStrings__MySql: Database=oogarts;Uid=devusr;Pwd=devpwd;Server=mysql;
+    depends_on:
+      mysql:
+        condition: service_healthy

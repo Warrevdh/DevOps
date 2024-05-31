@@ -1,0 +1,48 @@
+﻿@page "/Oogaandoening/{Id:long}"
+
+<PageTitle>@eyeCondition?.Name</PageTitle>
+
+<div class="oogaandoening-detail">
+    @if (eyeCondition is null)
+    {
+        <div class="loading">
+            <Loader />
+        </div>
+    }
+    else
+    {
+        <div class="back" @onclick="GoBack">
+            <img src="/images/chevron-left.svg" alt="checvron-left" />
+            <span>Terug</span>
+        </div>
+        <div class="header" data-test-id="eyeconditionName">
+            <h3>@eyeCondition?.Name</h3>
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="oogaandoening">
+                    <img src="@eyeCondition?.ImageUrl" alt="Oogaandoening" />
+                </div>
+                <img class="bg-circle" src="/images/OogaandoeningEclipse.png" alt="Oogaandoening" />
+                <div class="introduction">
+                    <h5>Korte beschrijving:</h5>
+                    <p>@eyeCondition?.Description</p>
+                </div>
+            </div>
+
+            <article>
+                <section>
+                     @((MarkupString)@eyeCondition?.Body)
+                </section>
+            </article>
+            @if (!string.IsNullOrWhiteSpace(eyeCondition?.BrochureUrl))
+            {
+                <div>
+                    <a class="BrochureLink" href="@eyeCondition.BrochureUrl" target="_blank">Download brochure</a>
+                </div>
+                
+            }
+        </div>
+    }
+    <Footer />
+</div>

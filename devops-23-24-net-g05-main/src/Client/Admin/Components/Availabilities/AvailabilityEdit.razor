@@ -1,0 +1,194 @@
+﻿@page "/Team/Beschikbaarheid"
+@using Shared.Users.Doctors.Availabilities;
+@using Client.Admin.Components.Availabilities.Components;
+
+@if (availabilities is null){
+	<Loader/>
+} else if (loading)
+{
+	<p>Even geduld, dit kan even duren...</p>
+	<Loader />
+} else
+{
+    <div class="header">
+        <h3>Voeg beschikbaarheden toe</h3>
+    </div>
+    <div class="content">
+		<div class="left">
+			<div>
+				<button @onclick=Daily>Dagelijks</button>
+				<button @onclick=Weekly>Wekelijks</button>
+			</div>
+
+			<div class="datepicker">
+				<RadzenLabel Text="Startdatum:" Component="StartDatePicker" />
+				<RadzenDatePicker Name="StartDatePicker" @bind-Value=@startDate DateFormat="dd/MM/yyyy" />
+			</div>
+			<div class="datepicker">
+				<RadzenLabel Text="Einddatum:" Component="EndDatePicker" />
+				<RadzenDatePicker Name="EndDatePicker" @bind-Value=@endDate DateFormat="dd/MM/yyyy" />
+			</div>
+
+			@if (type.Equals("Daily"))
+			{
+				<div class="daily">
+					<div class="dailyhours">
+						<div>
+							<label for="start">Startuur:</label>
+							<input type="time" class="start" @onchange=OnChangeStartTime />
+						</div>
+						<div>
+							<label for="eind">Einduur:</label>
+							<input type="time" class="start" @onchange=OnChangeEndTime />
+						</div>
+						<button @onclick=SaveDaily>Opslaan</button>
+					</div>
+				</div>
+			}
+			else if (type.Equals("Weekly"))
+			{
+				<div class="weeklyHours">
+					<div @onclick="() => ShowTimeslotsWeekday(0)" class="weekday">
+						<label>Maandag:</label>
+						<div class="timeday">
+							<div>
+								<label for="start">Startuur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeStartTimeW(0, e)" />
+							</div>
+							<div>
+								<label for="eind">Einduur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeEndTimeW(0, e)" />
+							</div>
+						</div>
+					</div>
+					<div @onclick="() => ShowTimeslotsWeekday(1)" class="weekday">
+						<label>Dinsdag:</label>
+							<div class="timeday">
+							<div>
+								<label for="start">Startuur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeStartTimeW(1, e)" />
+							</div>
+							<div>
+								<label for="eind">Einduur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeEndTimeW(1, e)" />
+							</div>
+						</div>
+					</div>
+					<div @onclick="() => ShowTimeslotsWeekday(2)" class="weekday">
+						<label>Woensdag:</label>
+						<div class="timeday">
+							<div>
+								<label for="start">Startuur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeStartTimeW(2, e)" />
+							</div>
+							<div>
+								<label for="eind">Einduur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeEndTimeW(2, e)" />
+							</div>
+						</div>
+					</div>
+					<div @onclick="() => ShowTimeslotsWeekday(3)" class="weekday">
+						<label>Donderdag:</label>
+						<div class="timeday">
+							<div>
+								<label for="start">Startuur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeStartTimeW(3, e)" />
+							</div>
+							<div>
+								<label for="eind">Einduur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeEndTimeW(3, e)" />
+							</div>
+						</div>
+					</div>
+					<div @onclick="() => ShowTimeslotsWeekday(4)" class="weekday">
+						<label>Vrijdag:</label>
+						<div class="timeday">
+							<div>
+								<label for="start">Startuur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeStartTimeW(4, e)" />
+							</div>
+							<div>
+								<label for="eind">Einduur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeEndTimeW(4, e)" />
+							</div>
+						</div>
+					</div>
+					<div @onclick="() => ShowTimeslotsWeekday(5)" class="weekday">
+						<label>Zaterdag:</label>
+						<div class="timeday">
+							<div>
+								<label for="start">Startuur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeStartTimeW(5, e)" />
+							</div>
+							<div>
+								<label for="eind">Einduur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeEndTimeW(5, e)" />
+							</div>
+						</div>
+					</div>
+					<div @onclick="() => ShowTimeslotsWeekday(6)" class="weekday">
+						<label>Zondag:</label>
+						<div class="timeday">
+							<div>
+								<label for="start">Startuur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeStartTimeW(6, e)" />
+							</div>
+							<div>
+								<label for="eind">Einduur</label>
+								<input type="time" class="start" @onchange="(e) => OnChangeEndTimeW(6, e)" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<button @onclick=SaveWeekly>Opslaan</button>
+			}
+		</div>
+
+		<div class="right">
+			@if (type.Equals("Daily"))
+			{
+				@if (showTimeslots)
+				{
+					<div class="timeslotsDaily">
+						<p>Pas hier eventueel uw timeslots aan. (OPMERKING: overlapping is eigen verantwoordelijkheid)</p>
+						<div class="timeslots">
+							@foreach (var ts in timeslots)
+							{
+								<div @onclick="() => TogglePopup(ts)">
+									<TimeSlotAdmin Time="ts.Datetime" Duration="ts.Duration" />
+								</div>
+								@if (showTimeslotPopup)
+								{
+									<TimeSlotEditPopup Open="@showTimeslotPopup" ToggleClose="ClosePopup" Timeslot=@activeTimeslot />
+								}
+							}
+						</div>
+
+					</div>
+				}
+
+			}
+			else if (type.Equals("Weekly"))
+			{
+				@if (showTimeslotsWeek != -1)
+				{
+					<div class="timeslotsWeekly">
+						<p>Pas hier eventueel uw timeslots aan. (OPMERKING: overlapping is eigen verantwoordelijkheid)</p>
+						<div class="timeslots">
+							@foreach (var ts in timeslotsWeek[showTimeslotsWeek])
+							{
+								<div @onclick="() => TogglePopup(ts)">
+									<TimeSlotAdmin Time="ts.Datetime" Duration="ts.Duration" />
+								</div>
+								@if (showTimeslotPopup)
+								{
+									<TimeSlotEditPopup Open="@showTimeslotPopup" ToggleClose="ClosePopup" Timeslot=@activeTimeslot />
+								}
+							}
+						</div>
+					</div>
+				}
+			}
+		</div>
+    </div>
+}

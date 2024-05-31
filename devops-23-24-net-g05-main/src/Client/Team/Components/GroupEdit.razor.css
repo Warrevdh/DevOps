@@ -1,0 +1,141 @@
+﻿.create-group {
+    /*    display: none;*/
+    /*    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    transform:translate(-50%,-50%);*/
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 25px;
+
+
+}
+
+.create-group .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.create-group .header h3 {
+    color: #000;
+    font-family: Trirong;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112.9%; /* 58.708px */
+    position: relative;
+}
+
+.create-group .header h3::before {
+    content: "";
+    width: 85px;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.content {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius:10px;
+    width: 100%;
+}
+
+::deep .input {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    border:none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.field > .label {
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+.buttons {
+
+    margin-top:30px;
+    text-align:center;
+}
+
+.cancelBtn, .acceptBtn{
+    padding:10px;
+    text-decoration:none;
+    color:black;
+    border:1px solid;
+    border-radius:10px;
+}
+
+.cancelBtn {
+    border:none;
+    outline: none;
+
+    transition: all 300ms ease-in-out;
+}
+.cancelBtn:hover{
+    text-decoration: underline;
+}
+
+.acceptBtn {
+    border:none;
+    background-color: #86efac;
+    color: black;
+    padding: 10px 15px;
+}
+
+::deep form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 100%;
+}
+
+::deep form .file-input{
+    border: none;
+    background: none;
+} 
+
+::deep form .field {
+    width: 100%;
+}
+.file-label {
+    margin-bottom: 10px;
+}
+
+.svgAdd path {
+    color: #4AE884;
+}
+.svgAdd {
+    margin-left:5px;
+    margin-top: 50%;
+}
+.svgCancel path {
+    color: #A0182F;
+}
+
+.svgCancel {
+    margin-left: 5px;
+    margin-top: 50%;
+}
+
+.flexRow {
+    display:flex;
+}

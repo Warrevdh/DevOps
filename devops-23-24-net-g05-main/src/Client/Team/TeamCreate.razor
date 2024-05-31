@@ -1,0 +1,69 @@
+﻿@page "/Team/Nieuw"
+@inject IJSRuntime JSRuntime
+@attribute [Authorize(Roles = "Administrator")]
+
+<div class="create-employee">
+    <div class="header">
+        <h3>Voeg teamlid toe</h3>
+    </div>
+    <div class="content">
+        <EditForm Model=@employee OnValidSubmit=@CreateEmployeeAsync>
+            <DataAnnotationsValidator />
+            <div class="field">
+                <label class="label">Voornaam</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="employee.Firstname" required />
+                    <ValidationMessage For="() => employee.Firstname" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Achternaam</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="employee.Lastname" required />
+                    <ValidationMessage For="() => employee.Lastname" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Profielfoto</label>
+                <div class="file has-name is-boxed is-fullwidth">
+                    <label class="file-label">
+                        <InputFile class="file-input" OnChange="@LoadImage" accept="image/*" required />
+                    </label>
+                </div>
+                <ValidationMessage For="() => employee.Image" />
+            </div>
+            <div class="field">
+                <label class="label">Geboortedatum</label>
+                <div class="control">
+                    <InputDate class="input" @bind-Value="employee.Birthdate" required />
+                    <ValidationMessage For="() => employee.Birthdate" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="employee.Email" type="email" required />
+                    <ValidationMessage For="() => employee.Email" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Telefoonnummer</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="employee.Phonenumber" type="tel" required />
+                    <ValidationMessage For="() => employee.Phonenumber" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Functie</label>
+                <div class="control">
+                    <RadzenDropDown TItem="string" Data="@teamFunction" @bind-Value="@chosenFunction" Placeholder="Selecteer functie"/>
+                        <p class="disclaimer">* Deze keuze is definitief en kan achteraf niet veranderd worden.</p>
+                </div>
+            </div>
+            <div class="buttons">
+                <a href="Team" class="cancelBtn">Annuleren</a>
+                <button class="button is-link is-fullwidth acceptBtn" type="submit">Toevoegen</button>
+            </div>
+        </EditForm>
+    </div>
+</div

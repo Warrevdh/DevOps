@@ -1,0 +1,21 @@
+﻿@using Shared.Appointments;
+@using Client.Admin.Components.Availabilities.Components;
+
+<div class="agenda">
+	<RadzenButton ButtonStyle="ButtonStyle.Success" Icon="add_circle_outline" class="mt-2 mb-4"
+			Text="Voeg nieuwe beschikbaarheden toe" Click="@CreateAvailability" />
+
+	<h1>@currentUser.Firstname @currentUser.Lastname</h1>
+	<RadzenScheduler TItem="AppointmentDto.UltraDetail" Data="@currentAppointments" StartProperty="Timeslot.Start" EndProperty="Timeslot.End"
+					 style="height: 768px;" TextProperty="Patient.Firstname" AppointmentSelect=@OnAppointmentSelect>
+		<Template Context="data">
+			@data.Patient!.LastName @data.Patient!.FirstName - @data.Timeslot!.Start.ToString("HH:mm")
+		</Template>
+		<ChildContent>
+			<RadzenDayView StartTime=@TimeSpan.FromHours(3) EndTime=@TimeSpan.FromHours(23) />
+			<RadzenMonthView />
+		</ChildContent>
+	</RadzenScheduler>
+
+	<DetailedTimeslot Open="showPop" ToggleClose="ClosePopup" Appointment=@currentAppointment />
+</div>

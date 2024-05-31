@@ -1,0 +1,12 @@
+﻿<div class="article" data-test-id="article">
+	<div class="afbeelding">
+		<img src="@Article.ImageUrl" alt="@Article.Title" title="@Article.Title" />
+	</div>
+	<div class="content">
+		<div class="text">
+			<h5>@Article.Title</h5>
+			<p>@articleDescription</p>
+		</div>
+		<button @onclick="NavigateToDetail">LEES MEER</button>
+	</div>
+</div>

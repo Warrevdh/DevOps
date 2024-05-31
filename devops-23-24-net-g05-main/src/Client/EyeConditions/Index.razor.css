@@ -1,0 +1,111 @@
+﻿.oogaandoeningen {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 155px);
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+    .oogaandoeningen .notification {
+        min-height: calc(100vh - 155px);
+    }
+
+.profile {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 5px;
+    color: #000;
+    font-family: Trirong;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112.9%; /* 18.064px */
+
+    border: none;
+    background: none;
+    outline: none;
+}
+.oogaandoeningen .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.oogaandoeningen .header h3 {
+    color: #000;
+    font-family: Trirong;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112.9%; /* 58.708px */
+    position: relative;
+}
+
+.oogaandoeningen .header h3::before {
+    content: "";
+    width: 85px;
+    height: 3px;
+    background-color: black;
+
+    border-radius: 5px;
+    position: absolute;
+    bottom: -5px; 
+    left: 0;
+}
+
+.create {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 5px;
+
+    color: #000;
+    font-family: Trirong;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112.9%; /* 18.064px */
+
+    border:none;
+    background: none;
+    outline:none;
+    transition: all 300ms ease-in-out;
+}
+.create:hover{
+    text-decoration: underline;
+}
+
+
+.oogaandoeningen .header .filter {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    gap: 15px;
+
+    cursor:pointer;
+}
+.oogaandoeningen .content {
+    margin-bottom: 25px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+@media only screen and (max-width: 945px) {
+    .oogaandoeningen .header h3 {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (max-width: 745px) {
+    .oogaandoeningen .header {
+        flex-direction: column;
+        align-items: start;
+
+        gap: 15px;
+    }
+
+    .oogaandoeningen .header .filter {
+        transform: translateX(-15px);
+    }
+}
