@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Vision</string>
+    <string name="com_auth0_client_id">RLGsg94Fv99qNo45XpEpDfmqpMvNrFTX</string>
+    <string name="com_auth0_domain">devops-oogarts.eu.auth0.com</string>
+    <string name="home">Home</string>
+    <string name="team">Team</string>
+    <string name="appointments">Afspraken</string>
+    <string name="account">Account</string>
+    <string name="oogarts_app_title">Vision Oogcentrum</string>
+    <string name="eye_conditions">Oogaandoeningen</string>
+</resources>
